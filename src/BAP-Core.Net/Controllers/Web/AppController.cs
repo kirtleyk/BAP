@@ -43,9 +43,12 @@ namespace BAP_Core.Net.Controllers.Web
         {
             if (model.Email.Contains("aol.com")) ModelState.AddModelError("Email", "We don't send to AOL.com");
 
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
+            {
                 _mailService.SendMail(_config["MailSettings:ToAddress"], model.Email, "Test email", model.Message);
-
+                ModelState.Clear();
+                ViewBag.UserMessage = "Message Sent";
+            }
             return View();
 
         }

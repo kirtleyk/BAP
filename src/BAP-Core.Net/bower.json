@@ -3,9 +3,11 @@
   "private": true,
     "dependencies": {
         "lodash": "~4.17.4",
-        "bootstrap": "~3.3.6",
-        "jquery": "~2.2.0",
-        "jquery-validation": "~1.14.0",
-        "jquery-validation-unobtrusive": "~3.2.6"
+        "jquery": "~3.2.1",
+        "bootswatch-dist": "~3.3.5-spacelab", 
+        "font-awesome": "~4.7.0",
+        "jquery-validation": "1.16.0",
+        "jquery-validation-unobtrusive": "3.2.6"
+             
     }
 }
