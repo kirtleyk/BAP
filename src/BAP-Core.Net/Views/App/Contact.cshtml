@@ -1,0 +1,43 @@
+﻿@model BAP_Core.Net.ViewModels.ContactViewModel
+@{
+    ViewData["Title"] = "Contact";
+}
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>
+
+<address>
+    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br/>
+    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+</address>
+
+<form method="post">
+    <span asp-validation-summary="ModelOnly"></span>
+    <div>
+        <label asp-for="Name">Name</label>
+        <input asp-for="Name"/>
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div>
+        <label asp-for="Email">Email</label>
+        <input asp-for="Email" type="email"/>
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
+        <label asp-for="Message">Message</label>
+        <textarea asp-for="Message" cols="40" rows="4"></textarea>
+        <span asp-validation-for="Message"></span>
+    </div>
+    <div><input type="submit" value="Send Message"/>
+    </div>
+
+</form>
