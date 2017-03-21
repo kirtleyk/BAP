@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BAP_Core.Net.Models;
 using BAP_Core.Net.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -34,13 +36,17 @@ namespace BAP_Core.Net
         {
             //singleton of service from configuration create in startup constructor
             services.AddSingleton(_config);
-            // Add framework services.
-            if (_env.IsDevelopment() || _env.IsEnvironment("test"))
-                services.AddScoped<IMailService, DebugMailService>(); // add the sendMail service
-            else
+            
+            // Add framework services. Inject an email service if needed
+            //if (_env.IsDevelopment() || _env.IsEnvironment("test"))
+            //    services.AddScoped<IMailService, DebugMailService>(); // add the sendMail service
+            //else
             //Implement real email service
-            {
-            }
+            //{
+
+            //}
+            // register SQL server for ourd DB context persistence store as a service
+            services.AddDbContext<BapContext>();   
             
             services.AddMvc();
         }

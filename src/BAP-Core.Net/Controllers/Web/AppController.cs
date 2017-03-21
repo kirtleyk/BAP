@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BAP_Core.Net.Models;
 using BAP_Core.Net.Services;
 using BAP_Core.Net.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -10,21 +11,15 @@ using Microsoft.Extensions.Configuration;
 
 namespace BAP_Core.Net.Controllers.Web
 {
-    public class AppController : Controller
+    public class AppController : BaseController
     {
-        private readonly IMailService _mailService;
-        private IConfigurationRoot _config;
-
-        public AppController(IMailService mailService, IConfigurationRoot config)
-        {
-            _mailService = mailService;
-            _config = config;
-
-        }
+        private AppController(IMailService mailService, IConfigurationRoot config, BapContext context) : base(mailService, config, context){}
 
         public IActionResult Index()
         {
-            return View();
+            
+            var data = Db.Trips.ToList();
+            return View(data);
         }
 
         public IActionResult About()
@@ -45,12 +40,14 @@ namespace BAP_Core.Net.Controllers.Web
 
             if (ModelState.IsValid)
             {
-                _mailService.SendMail(_config["MailSettings:ToAddress"], model.Email, "Test email", model.Message);
+                MailService.SendMail(Config["MailSettings:ToAddress"], model.Email, "Test email", model.Message);
                 ModelState.Clear();
                 ViewBag.UserMessage = "Message Sent";
             }
             return View();
 
         }
+
+
     }
 }

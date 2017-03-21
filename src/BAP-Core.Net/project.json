@@ -9,6 +9,7 @@
         "Microsoft.AspNetCore.Server.Kestrel": "1.1.1",
         "Microsoft.AspNetCore.StaticFiles": "1.1.1",
         "Microsoft.EntityFrameworkCore": "1.1.1",
+        "Microsoft.EntityFrameworkCore.SqlServer": "1.0.3",
         "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.1.1",
         "Microsoft.Extensions.Configuration.Json": "1.1.1",
         "Microsoft.Extensions.Logging": "1.1.1",
